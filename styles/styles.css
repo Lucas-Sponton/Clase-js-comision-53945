@@ -1,22 +1,77 @@
-.imgProductos {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    margin-top: 1rem;
+body {
+    background-image: linear-gradient(to bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
+
+.tituloPag {
+    font-size: 5rem;
+    color: white;
+}
+
+.nombrePosicion {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.colorLetra {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
 
 .card {
     display: flex;
     align-items: center;
-    margin:.5rem;
+    margin: 2rem;
+    height: 25rem;
+    background-color: #07A0C3;
+}
+
+.imgProductos1{
+    height: 55%;
+}
+
+.estiloBoton {
+    color: white;
+    background-color: #0B132B;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
 }
 
 .colorBoton {
-    color:red;
-    background-color: #85bb65;
+    color: white;
+    background-color: #0B132B;
 }
 
+.colorBoton2 {
+    color: white;
+    background-color: #0B132B;
+    margin: 3rem;
+    width: 12rem;
+}
+.colorBoton3 {
+    color: white;
+    background-color: #0B132B;
+    margin: 0rem;
+    width: 12rem;
+}
+
+
+.estiloBoton:hover {
+    background-color: green;
+    color: white;
+}
 .colorBoton:hover {
+    background-color: green;
+    color: white;
+}
+.colorBoton2:hover {
+    background-color: #4B644A;
+    color: white;
+}
+.colorBoton3:hover {
     background-color: green;
     color: white;
 }
