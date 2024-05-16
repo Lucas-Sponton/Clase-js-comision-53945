@@ -88,7 +88,7 @@ const verSabores = document.getElementById("verSabores");
 verSabores.addEventListener("click", () => {
     mostrarSaborElegido();
 })
-
+//funcion para mostras sabor elegido:
 const mostrarSaborElegido = () => {
     contenedorSaboresPedidos.innerHTML = "";
 
@@ -145,15 +145,16 @@ const eliminarTodosLosSabores = () => {
 
 //tamaño:
 
-
+//creamos un array con todo nuestro catalogo de productos:
 const productos = [cuarto, medio, kilo];
-
+//creamos el array del carrito.
 let carrito = [];
-
+//cargar carrito desde el localstorage.
+//si hay algo en el local, lo cargamos en el carrito.
 if(localStorage.getItem("carrito")){
     carrito = JSON.parse(localStorage.getItem("carrito"));
 }
-
+//modificamos el dom mostrando los productos:
 const contenedorProductos = document.getElementById("contenedorProductos");
 
 
@@ -172,7 +173,7 @@ const mostrarProductos = () => {
                 </div>
                         `
         contenedorProductos.appendChild(card);
-
+//agregar productos al carrito
         const boton = document.getElementById(`boton${tamaño.id}`);
         boton.addEventListener("click", () => {
             agregarAlCarrito(tamaño.id);
@@ -181,7 +182,7 @@ const mostrarProductos = () => {
 }
 
 mostrarProductos();
-
+//creamos la funcion agregar al carrito
 const agregarAlCarrito = (id) => {
     const tamañoEnCarrito = carrito.find(tamaño => tamaño.id === id);
     if(tamañoEnCarrito) {
@@ -190,17 +191,18 @@ const agregarAlCarrito = (id) => {
         const tamaño = productos.find(tamaño => tamaño.id === id);
         carrito.push(tamaño)
     }
+    //trabajamos con el localstorage:
     localStorage.setItem("carrito", JSON.stringify(carrito));
     calcularTotal();
 }
-
+//mostrar el carrito de compras:
 const contenedorCarrito = document.getElementById("contenedorCarrito");
 const verCarrito = document.getElementById("verCarrito");
 
 verCarrito.addEventListener("click", () => {
     mostrarCarrito();
 })
-
+//funcion para mostrar el carrito:
 const mostrarCarrito = () => {
     contenedorCarrito.innerHTML = "";
 
@@ -219,7 +221,7 @@ const mostrarCarrito = () => {
                 </div>
                         `
         contenedorCarrito.appendChild(card);
-
+//eliminar productos del carrito
         const boton = document.getElementById(`eliminar${tamaño.id}`);
         boton.addEventListener("click", () => {
             eliminarDelCarrito(tamaño.id);
@@ -227,7 +229,7 @@ const mostrarCarrito = () => {
     })
     calcularTotal();
 }
-
+//funcion que elimina el producto del carrito:
 
 const eliminarDelCarrito = (id) => {
     const tamaño = carrito.find(tamaño => tamaño.id === id);
@@ -235,10 +237,11 @@ const eliminarDelCarrito = (id) => {
     carrito.splice(indice, 1);
     mostrarCarrito();
 
+    //trabajamos en el localstorage
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-
+//vaciamos todo el carrito de compras.
 
 const vaciarCarrito = document.getElementById("vaciarCarrito");
 
@@ -246,14 +249,16 @@ vaciarCarrito.addEventListener("click", () => {
     eliminarTodoElCarrito();
 })
 
-
+//funcion que elimina todo el carrito:
 const eliminarTodoElCarrito = () => {
     carrito = [];
     mostrarCarrito();
 
+    //local storage:
     localStorage.clear();
 }
 
+//mostramos mensaje con el total de la compra
 
 const total = document.getElementById("total");
 
@@ -261,8 +266,7 @@ const calcularTotal = () => {
     let totalCompra = 0;
     carrito.forEach(tamaño => {
         totalCompra += tamaño.precio * tamaño.cantidad;
+        //+= es igual a poner total compra = total compa + producto.precio * producto.cantidad
     })
     total.innerHTML = `Total: $${totalCompra}`;
 }
-
-
